@@ -7,11 +7,13 @@
             <div class="navbar-content">
               <div class="logo">VUE-CLI</div>
               <ul class="navbar-list">
-                <li class="navbar-item">
-                  <a href="" class="navbar-link">Example</a>
-                </li>
-                <li class="navbar-item">
-                  <a href="" class="navbar-link">Home</a>
+                <li class="navbar-item" v-for="link in links" :key="link.title">
+                  <router-link
+                    class="navbar-link"
+                    :title="link.title"
+                    :to="link.url"
+                    >{{ link.title }}</router-link
+                  >
                 </li>
               </ul>
             </div>
@@ -21,7 +23,7 @@
 
       <router-view></router-view>
 
-      <!-- <footer></footer> -->
+      <footer></footer>
     </div>
   </div>
 </template>
@@ -29,8 +31,21 @@
 <script>
 export default {
   name: "App",
+  data() {
+    return {
+      links: [
+        { title: "Home", url: "/" },
+        { title: "Example", url: "/example" },
+      ],
+    };
+  },
 };
 </script>
 
-<style>
+<style lang="scss">
+.navbar-link {
+  &.router-link-exact-active {
+    color: #5247e7;
+  }
+}
 </style>

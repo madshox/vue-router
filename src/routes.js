@@ -6,6 +6,7 @@ Vue.use(VueRouter)
 
 // Pages
 import Home from './pages/Home.vue';
+import NotFound from './pages/404.vue'
 import Example from './pages/Example.vue'
 
 // Routering
@@ -21,6 +22,11 @@ export default new VueRouter({
             path: '/example',
             name: 'example',
             component: Example
+        },
+        {
+            path: '*',
+            name: 'notFound',
+            component: NotFound
         }
     ]
 })
